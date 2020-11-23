@@ -99,7 +99,7 @@ def index():
             if coCheck: #If all checks are passed...
                 dlines.append(l) #Add line to desired lines\ 
 
-        global dLines
+        global dLines   #makes the dline information global so it can be used outside the index in the csv download
         dLines = dlines
         print(dLines)
 
@@ -112,13 +112,10 @@ def index():
         "Something went wrong."
 
 
-@app.route("/getPlotCSV")
+@app.route("/getPlotCSV") #Link to download csv
 def getPlotCSV():
-    
-
-    csv = str(dLines).encode()
-    
-
+    csv = str(dLines).encode() #Takes the global dLines variable and encodes it so each cell in the spreadsheet is all of the data pertaining to that data point. More
+                                   #work to be done on the formatting of the csv
     return Response(
         csv, 
         mimetype="text/csv",
