@@ -112,12 +112,14 @@ def index():
         "Something went wrong."
 
 
-@app.route("/getPlotCSV")
+@app.route("/getPlotCSV") #Link to download csv file
 def getPlotCSV():
     
-
-    csv = str(dLines).encode()
+    csv = str('Run,') + str('Week,') + str('Channel,') + str('Frequency,') + str('Coherence') + '\n' #Column headers
     
+    for line in dLines: #Puts data into multiple rows
+        csv = csv + str(line) + '\n'
+    csv = csv.encode()
 
     return Response(
         csv, 
