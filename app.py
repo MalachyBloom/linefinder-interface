@@ -138,7 +138,7 @@ def getPlotCSV():
     csv = str('Run: ' + run + ',') + str('Week: ' + week + ',') + str('Channel: ' + channel + ',') + str('Frequency: ' + freqLB + ' - ' + freqUB + ',') + str('Coherence: ' + cohLB + ' - ' + cohUB + ',') + '\n'
     
     
-    for line in dLines:
+    for line in dLines:             #Puts data into rows in csv
         csv = csv + str(line) + '\n'
     csv = csv.encode()
     
